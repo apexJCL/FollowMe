@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Follow Me</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="navigation_drawer_close">Cerrar panel de navegación</string>
+    <string name="navigation_drawer_open">Abrir panel de navegación</string>
+    <string name="title_activity_main">Sígueme</string>
+    <string name="title_activity_maps">Mapa</string>
+</resources>
