@@ -1,4 +1,4 @@
-package team1.com.followme.LIsteners;
+package team1.com.followme.Listeners;
 
 import android.location.Location;
 import com.google.android.gms.maps.CameraUpdateFactory;

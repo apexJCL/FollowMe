@@ -16,10 +16,10 @@ import android.view.MenuItem;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import team1.com.followme.LIsteners.CustomLocationChangeListener;
-import team1.com.followme.LIsteners.CustomMapClickListener;
-import team1.com.followme.LIsteners.CustomMapLoadedCallback;
-import team1.com.followme.LIsteners.CustomMarkerListener;
+import team1.com.followme.Listeners.CustomLocationChangeListener;
+import team1.com.followme.Listeners.CustomMapClickListener;
+import team1.com.followme.Listeners.CustomMapLoadedCallback;
+import team1.com.followme.Listeners.CustomMarkerListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
