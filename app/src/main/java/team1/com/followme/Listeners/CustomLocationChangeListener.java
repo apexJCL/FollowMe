@@ -24,7 +24,7 @@ public class CustomLocationChangeListener implements GoogleMap.OnMyLocationChang
             markerOptions.position(new LatLng(location.getLatitude(), location.getLongitude()));
             markerOptions.title("Yo");
             myposition = map.addMarker(markerOptions);
-            CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(location.getLatitude(), location.getLongitude())).zoom(20).build();
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(location.getLatitude(), location.getLongitude())).zoom(15).build();
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             myposition.showInfoWindow();
         }

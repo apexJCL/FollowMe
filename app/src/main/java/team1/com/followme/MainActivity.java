@@ -1,6 +1,8 @@
 package team1.com.followme;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import team1.com.followme.Listeners.CustomLocationChangeListener;
@@ -48,17 +51,23 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        // Create the map
+        // Check if the location services are activated
+        if (!((LocationManager)getApplicationContext().getSystemService(Context.LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            Intent gpsOptionsIntent = new Intent(
+                    android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(gpsOptionsIntent);
+        }
+        // Get the map
         GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapfragment)).getMap();
         // Define the map type
-        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         // Enable the location
         map.setMyLocationEnabled(true);
         // We add the custom listeners
         map.setOnMapClickListener(new CustomMapClickListener(map)); // This one controls the marker adding to destiny
         map.setOnMarkerClickListener(new CustomMarkerListener()); // This one controls info display
         map.setOnMyLocationChangeListener(new CustomLocationChangeListener(map)); // This one updates our current position
-        map.setOnMapLoadedCallback(new CustomMapLoadedCallback(map, getApplicationContext().getAssets()));
+        map.setOnMapLoadedCallback(new CustomMapLoadedCallback(map, getApplicationContext().getAssets())); // This manages user position
     }
 
     @Override
@@ -98,19 +107,10 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         switch (item.getItemId()){
-            case R.id.nav_camara:
-                Intent intent = new Intent(this, MapsActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_gallery:
-                break;
-            case R.id.nav_slideshow:
-                break;
-            case R.id.nav_manage:
-                break;
-            case R.id.nav_share:
-                break;
-            case R.id.nav_send:
+            case R.id.nav_about:
+                //Intent intent = new Intent(this, MapsActivity.class);
+                //startActivity(intent);
+                Toast.makeText(getApplicationContext(), getString(R.string.title), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

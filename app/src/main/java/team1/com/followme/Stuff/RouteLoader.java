@@ -41,15 +41,13 @@ public class RouteLoader {
             // Get the route
             Route tmp = iterator.next();
             Log.i("RouteLoader", "Adding route: "+tmp.getTitle());
+            Log.i("RouteLoader", "Route Color: "+tmp._getColor());
             // Get the points to draw on map
             ArrayList<LatLng> points = tmp.getPoints();
-            // Iterate the points
-            Iterator<LatLng> pointIterator = points.iterator();
             // Create the polyline
             PolylineOptions polylineOptions = new PolylineOptions();
-            // While the route has points
-            while (pointIterator.hasNext())
-                polylineOptions.add(pointIterator.next()); // add them to the polyline
+            // Add the points to the polyline
+            polylineOptions.addAll(points);
             // We set the color of the polyline
             polylineOptions.color(tmp.getColor());
             // Finally, add it to the map

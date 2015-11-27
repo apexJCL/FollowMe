@@ -13,6 +13,7 @@ public class Route {
 
     private String title; // Title of the route
     private int color; // Color of the route
+    private String _color;
     private ArrayList<LatLng> points = new ArrayList<>(0); // Lat, Long points to track it on the map
 
     /**
@@ -48,6 +49,7 @@ public class Route {
      * @param color
      */
     public void setColor(String color){
+        _color = color;
         this.color = getAndroidColor(color);
     }
 
@@ -68,12 +70,20 @@ public class Route {
     }
 
     /**
+     * It returns the color in string format
+     * @return
+     */
+    public String _getColor(){ return _color; }
+
+    /**
      * Parses the string to the desired color
      * @param color
      * @return
      */
     private int getAndroidColor(String color){
         switch (color){
+            case "BLUE":
+                return Color.BLUE;
             case "CYAN":
                 return Color.CYAN;
             case "GRAY":
