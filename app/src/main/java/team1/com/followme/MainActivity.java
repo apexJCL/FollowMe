@@ -64,10 +64,9 @@ public class MainActivity extends AppCompatActivity
         // Enable the location
         map.setMyLocationEnabled(true);
         // We add the custom listeners
-        map.setOnMapClickListener(new CustomMapClickListener(map)); // This one controls the marker adding to destiny
+        map.setOnMapClickListener(new CustomMapClickListener(map, getAssets())); // This one controls the marker adding to destiny
         map.setOnMarkerClickListener(new CustomMarkerListener()); // This one controls info display
         map.setOnMyLocationChangeListener(new CustomLocationChangeListener(map)); // This one updates our current position
-        map.setOnMapLoadedCallback(new CustomMapLoadedCallback(map, getApplicationContext().getAssets())); // This manages user position
     }
 
     @Override
