@@ -14,7 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import team1.com.followme.LIsteners.CustomLocationChangeListener;
+import team1.com.followme.LIsteners.CustomMapClickListener;
+import team1.com.followme.LIsteners.CustomMapLoadedCallback;
+import team1.com.followme.LIsteners.CustomMarkerListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,7 +49,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         // Create the map
-
+        GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapfragment)).getMap();
+        // Define the map type
+        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        // Enable the location
+        map.setMyLocationEnabled(true);
+        // We add the custom listeners
+        map.setOnMapClickListener(new CustomMapClickListener(map)); // This one controls the marker adding to destiny
+        map.setOnMarkerClickListener(new CustomMarkerListener()); // This one controls info display
+        map.setOnMyLocationChangeListener(new CustomLocationChangeListener(map)); // This one updates our current position
+        map.setOnMapLoadedCallback(new CustomMapLoadedCallback(map, getApplicationContext().getAssets()));
     }
 
     @Override
